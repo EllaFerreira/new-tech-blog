@@ -1,11 +1,15 @@
-import type { NextPage } from 'next'
+import { useRouter } from "next/router";
+import { useEffect } from "react";
+import { NextPageWithLayout } from "../types/types";
 
-const Home: NextPage = () => {
-  return (
-    <div className="font-inter font-semibold p-4 text-lg">
-      Welcome to my Next.js app with Tailwind CSS!
-    </div>
-  )
-}
+const Home: NextPageWithLayout = () => {
+  const router = useRouter();
 
-export default Home
+  useEffect(() => {
+    router.prefetch("/");
+  }, []);
+
+  return <div className="text-white text-[48px]" />;
+};
+
+export default Home;
